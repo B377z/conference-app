@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './ProposalForm.css'; // Import the CSS file for form styling
+
 
 const ProposalForm = () => {
   const [title, setTitle] = useState('');
@@ -35,49 +37,53 @@ const ProposalForm = () => {
   };
 
   return (
-    <div>
+    <div className="proposal-form-container">
       <h1>Call for Proposals</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <p className="description">
+        Are you passionate about Cloud, Kubernetes, Docker or other technologies related with the Cloud. 
+        Submit your proposal to share your knowledge with our amazing community!
+      </p>
+      <form onSubmit={handleSubmit} className="proposal-form">
+        <div className="form-group">
           <label>Title</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
+            className="form-control"
           />
-          {errors.title && <div style={{ color: "red" }}>{errors.title}</div>} 
         </div>
-        <div>
+        <div className="form-group">
           <label>Description</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
+            className="form-control"
           />
-          {errors.description && <div style={{ color: "red" }}>{errors.description}</div>}
         </div>
-        <div>
+        <div className="form-group">
           <label>Author</label>
           <input
             type="text"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
             required
+            className="form-control"
           />
-          {errors.author && <div style={{ color: "red" }}>{errors.author}</div>}
         </div>
-        <div>
+        <div className="form-group">
           <label>Email</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            className="form-control"
           />
-          {errors.email && <div style={{ color: "red" }}>{errors.email}</div>}
         </div>
-        <button type="submit">Submit Proposal</button>
+        <button type="submit" className="btn btn-primary">Submit Proposal</button>
       </form>
     </div>
   );

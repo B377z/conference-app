@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import AgendaPage from './components/AgendaPage';
 import ProposalForm from './components/ProposalForm';
+import './index.css'; // Ensure the CSS file is imported
 
 const App = () => {
   return (

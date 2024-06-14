@@ -1,0 +1,70 @@
+/* src/components/ProposalForm.css */
+.proposal-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .proposal-form h1 {
+    text-align: left;
+    margin-bottom: 1.5rem;
+    color: #343a40;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .proposal-form .description {
+    text-align: left;
+    margin-bottom: 2rem;
+    color: #6c757d;
+    font-size: 1.2rem;
+  }
+  
+  .proposal-form .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .proposal-form .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #343a40;
+  }
+  
+  .proposal-form .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .proposal-form .form-control:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
+  }
+  
+  .proposal-form .btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .proposal-form .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  
