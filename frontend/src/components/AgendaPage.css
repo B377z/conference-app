@@ -1,0 +1,22 @@
+/* src/components/AgendaPage.css */
+.agenda-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .agenda-container h1 {
+    text-align: center;
+    color: #343a40;
+  }
+  
+  .agenda-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .agenda-container ul li {
+    padding: 1rem;
+    border-bottom: 1px solid #ced4da;
+  }
+  

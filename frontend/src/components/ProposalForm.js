@@ -1,36 +1,45 @@
+// The handleChange function is attempting to use setFormData and formData, which are not defined.
+// To fix this, you should consolidate the state into a single state object and update the handleChange function accordingly.
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import './ProposalForm.css'; // Import the CSS file for form styling
 
-
 const ProposalForm = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [author, setAuthor] = useState('');
-  const [email, setEmail] = useState('');
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    author: '',
+    email: '',
+  });
   const [errors, setErrors] = useState({}); // Step 1
 
   const validateForm = () => {
     let tempErrors = {};
-    if (!title) tempErrors.title = "Title is required";
-    if (!description) tempErrors.description = "Description is required";
-    if (!author) tempErrors.author = "Author is required";
-    if (!email) tempErrors.email = "Email is required";         
-    else if (!/\S+@\S+\.\S+/.test(email)) tempErrors.email = "Email is invalid"; // Step 2  
+    if (!formData.title) tempErrors.title = "Title is required";
+    if (!formData.description) tempErrors.description = "Description is required";
+    if (!formData.author) tempErrors.author = "Author is required";
+    if (!formData.email) tempErrors.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) tempErrors.email = "Email is invalid"; // Step 2  
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [name]: value
+    }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!validateForm()) return; // Step 3
-    axios.post('/api/proposals', { title, description, author, email })
+    axios.post('http://localhost:5000/api/proposals', formData)
       .then(response => {
         alert('Proposal submitted successfully!');
-        setTitle('');
-        setDescription('');
-        setAuthor('');
-        setEmail('');
+        setFormData({ title: '', description: '', author: '', email: '' });
         setErrors({}); // Step 5
       })
       .catch(error => console.error('Error submitting proposal:', error));
@@ -48,8 +57,9 @@ const ProposalForm = () => {
           <label>Title</label>
           <input
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
             required
             className="form-control"
           />
@@ -57,8 +67,9 @@ const ProposalForm = () => {
         <div className="form-group">
           <label>Description</label>
           <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
             required
             className="form-control"
           />
@@ -67,8 +78,9 @@ const ProposalForm = () => {
           <label>Author</label>
           <input
             type="text"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
+            name="author"
+            value={formData.author}
+            onChange={handleChange}
             required
             className="form-control"
           />
@@ -77,8 +89,9 @@ const ProposalForm = () => {
           <label>Email</label>
           <input
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
             required
             className="form-control"
           />
