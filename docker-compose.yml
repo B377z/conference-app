@@ -5,6 +5,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile.dev
+    image: bellzytech/conference-app-backend:dev
     ports:
       - "5000:5000"
     environment:
@@ -19,6 +20,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile.dev
+    image: bellzytech/conference-app-frontend:dev
     ports:
       - "3000:3000"
     depends_on:
