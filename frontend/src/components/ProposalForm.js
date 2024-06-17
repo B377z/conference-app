@@ -36,7 +36,7 @@ const ProposalForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!validateForm()) return; // Step 3
-    axios.post('http://localhost:5000/api/proposals', formData)
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/proposals`, formData)
       .then(response => {
         alert('Proposal submitted successfully!');
         setFormData({ title: '', description: '', author: '', email: '' });

@@ -7,7 +7,7 @@ const AgendaPage = () => {
   const [agendaItems, setAgendaItems] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/agenda')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/agenda`)
       .then(response => setAgendaItems(response.data))
       .catch(error => console.error('Error fetching agenda items:', error));
   }, []);

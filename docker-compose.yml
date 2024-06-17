@@ -9,7 +9,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - MONGODB_URImongodb+srv://dba:password%40123@conference-cluster.i8akzs0.mongodb.net/conferencedb?retryWrites=true&w=majority
+      - MONGODB_URI=mongodb+srv://dba:password%40123@conference-cluster.i8akzs0.mongodb.net/conferencedb?retryWrites=true&w=majority
       - EMAIL_USER=unwanamartinudo@gmail.com
       - EMAIL_PASS=kumi lnhs jkaj jyug
     volumes:
